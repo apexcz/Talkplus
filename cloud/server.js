@@ -1,0 +1,59 @@
+var static = require('node-static');
+var http = require('http');
+var file = new(static.Server)();
+//Creates a Server at port 2014
+var app = http.createServer(function (req, res) {
+  file.serve(req, res);
+}).listen(2014);
+
+var nicknames = [];
+
+var io = require('socket.io').listen(app);
+
+io.sockets.on('connection', function (socket){
+
+
+	function log(){
+		var array = [">>> Message from server: "];
+	  for (var i = 0; i < arguments.length; i++) {
+	  	array.push(arguments[i]);
+	  }
+	    socket.emit('log', array);
+	}
+
+	socket.on('message', function (message) {
+		log('Got message: ', message);
+    // For a real app, should be room only (not broadcast)
+		socket.broadcast.emit('message', message);
+	});
+
+	socket.on('create or join', function (room) {
+		var numClients = io.sockets.clients(room.rm).length;
+
+		log('Room ' + room.rm + ' has ' + numClients + ' client(s)');
+		log('Request to create or join room', room.rm);
+
+		if (numClients == 0){
+			socket.join(room.rm);
+			nicknames.push(room.nick);
+			updateNicknames();
+			socket.emit('created', room.rm);
+		} else if (numClients == 1) {
+			io.sockets.in(room.rm).emit('join', room.rm);
+			socket.join(room.rm);
+			socket.emit('joined', room.rm);
+		} else { // max two clients
+			socket.emit('full', room.rm);
+		}
+		socket.emit('emit(): client ' + socket.id + ' joined room ' + room.rm);
+		socket.broadcast.emit('broadcast(): client ' + socket.id + ' joined room ' + room.rm);
+
+	});
+
+	function updateNicknames(){
+	io.sockets.emit('usernames',nicknames);
+}
+
+});
+
+

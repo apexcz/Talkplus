@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<meta charset="utf-8" />
+	<title>TalkPlus-RoomName</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+	<meta name="description" content="Peer-to-Peer Communication Using Webrtc" />
+	<meta name="author" content="Oty Chinedu Stanley" />
+	<!-- FAVICON -->
+	<link rel="shortcut icon" href="img/logo.ico">
+	<!-- STYLESHEETS -->
+	<link rel="stylesheet" type="text/css" href="css/cloud-admin.css" />
+	<link rel="stylesheet" type="text/css" href="css/themes/default.css" id="skin-switcher" />
+	<link rel="stylesheet" type="text/css" href="css/responsive.css" />	
+	<link rel="stylesheet" type="text/css" href="css/jquery.share.css" />
+	<link rel="stylesheet" type="text/css" href="css/tplus.css" />
+	
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<!-- DATE RANGE PICKER -->
+	<link rel="stylesheet" type="text/css" href="js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+	<!-- FONTS -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css' />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+	<!-- HEADER -->
+	<header class="navbar clearfix navbar-fixed-top" id="header">
+		<div class="container">
+				<div class="navbar-brand">
+					<!-- COMPANY LOGO -->
+					<a href="index.html">
+						<img src="img/logo/logo.png" alt="Talkplus" class="img-responsive" height="30" width="120" />
+					</a>
+					<!-- /COMPANY LOGO -->
+					<!-- SIDEBAR COLLAPSE -->
+					<div id="sidebar-collapse" class="sidebar-collapse btn tip-bottom" data-toggle="tooltip" title="Toggle Sidebar">
+						<i class="fa fa-reorder" data-icon1="fa fa-reorder" data-icon2="fa fa-reorder"></i>
+					</div>
+					<!-- /SIDEBAR COLLAPSE -->
+				</div>
+				<!-- BEGIN TOP NAVIGATION MENU -->					
+				<ul class="nav navbar-nav pull-right">
+					<!-- BEGIN SHARE DROPDOWN -->
+					<li class="dropdown user" id="header-user">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="fa fa-link"></i>
+							<span>Invite <b class="roomlink"></b></span><span class="copied"></span>
+							<i class="fa fa-angle-down"></i>
+						</a>
+						<!--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-link"></i> Copy to Clipboard</a>-->
+						<ul class="dropdown-menu">
+							<li><a href="#" id="paperclip"><i class="fa fa-paperclip"></i> Copy to Clipboard</a></li>
+							<li><div id="socialmedia"></div></li>							
+						</ul>						
+					</li>
+					<!-- END SHARE DROPDOWN -->
+				</ul>
+				<!-- END TOP NAVIGATION MENU -->
+		</div>
+	</header>
+	<!--/HEADER -->
+	
+	<!-- PAGE -->
+	<section id="page">
+		<!-- Username Prompt -->
+    <div class="modal hide fade" id="UsernameModal" role="dialog">
+
+        <div class="modal-header">
+          <h3>Talk Plus - Username</h3>
+        </div>
+
+        <div class="modal-body">
+          <div class="control-group">
+            <label>Username :</label>
+            <input id="username" type="text" class="span2">
+            <span class="help-inline hide">Not empty !</span>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+        <button id="enter" class="btn btn-primary">Chat</button>
+        </div>
+
+    </div>
+<!-- End of Username Prompt -->
+				<!-- SIDEBAR -->
+				<div id="sidebar" class="sidebar sidebar-fixed">
+					<div class="sidebar-menu nav-collapse">
+						<div class="divide-20"></div>
+						<!-- ROOM NAME -->
+						<div class="clearfix">
+							<h3 class="content-title pull-left"><span class="rnm" style=""></span></h3>
+						</div>
+						<!-- /ROOM NAME -->
+
+						<!-- SIDEBAR MENU -->
+						<ul>							
+							<li><a class="basic-alertd" data-toggle="modal" href="#"><i class="fa fa-desktop fa-fw">
+								</i> <span class="menu-text">Change UserName</span></a></li>
+							<li><a class="basic-alertz" data-toggle="modal" href="#" ><i class="fa fa-desktop fa-fw">
+								</i> <span class="menu-text">List of Users</span></a></li>							
+							<li class="has-sub">
+								<a href="#" class="" id="bg">
+								<i class="fa fa-bookmark-o fa-fw"></i> <span class="menu-text">Background Color</span>
+								<span class="arrow"></span>
+								</a>
+								<ul class="sub bckg">
+									<li><a class="" href="01" id="black"><span class="sub-menu-text">Black</span></a></li>
+									<li><a class="" href="02"><span class="sub-menu-text">Yellow</span></a></li>
+									<li><a class="" href="03"><span class="sub-menu-text">Plain</span></a></li>				
+									<li class="has-sub-sub">
+										<a href="javascript:;" class=""><span class="sub-menu-text">Background Color</span>
+										<span class="arrow"></span>
+										</a>
+										<ul class="sub-sub">
+											<li><a class="" href="#"><span class="sub-sub-menu-text">Item 1</span></a></li>
+											<li><a class="" href="#"><span class="sub-sub-menu-text">Item 2</span></a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>														
+						</ul>
+						<!-- /SIDEBAR MENU -->
+
+						<!--CHAT-->
+						<div class="divide-20"></div>
+							<div class="box-container">
+									<div class="box border red">
+										<div class="box-title">
+											<h4><i class="fa fa-comment"></i>CHAT</h4>
+											<div class="tools">												
+												<a href="javascript:;" class="reload">
+													<i class="fa fa-refresh"></i>
+												</a>
+												<a href="javascript:;" class="collapse">
+													<i class="fa fa-chevron-up"></i>
+												</a>
+												<a href="javascript:;" class="remove">
+													<i class="fa fa-times"></i>
+												</a>
+											</div>
+										</div>
+										<div class="box-body">
+											<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 350px;"><div class="scroller" data-height="350px" data-always-visible="1" data-rail-visible="1" style="overflow: hidden; width: auto; height: 350px;">
+												<ul class="media-list chat-list" id="chatbox">
+													<li class="media">													  
+													  <div class="media-body chat-pop">
+														<h4 class="media-heading">John Doe <span class="pull-right"><i class="fa fa-clock-o"></i> <abbr class="timeago" title="Oct 9, 2013">9 months ago</abbr> </span></h4>
+														<p>Cras sit amet nibh libero,turpis.</p>
+														
+													  </div>
+													</li>
+													<li class="media">													 
+													  <div class="pull-right media-body chat-pop mod">
+														<h4 class="media-heading">You <span class="pull-left"><abbr class="timeago" title="Oct 10, 2013">9 months ago</abbr> <i class="fa fa-clock-o"></i></span></h4>
+														Cras sit amet nibh libero, in gravida nulla. Nulla velturpis.
+													  </div>
+													</li>
+													<li class="media">													 
+													  <div class="media-body chat-pop">
+														<h4 class="media-heading">Tim Row <span class="pull-right"><i class="fa fa-clock-o"></i> <abbr class="timeago" title="Oct 10, 2013">9 months ago</abbr> </span></h4>
+														<p>Hi David.</p>
+													  </div>
+													</li>
+													<li class="media">													  
+													  <div class="media-body chat-pop">
+														<h4 class="media-heading">John Doe <span class="pull-right"><i class="fa fa-clock-o"></i> <abbr class="timeago" title="Oct 10, 2013">9 months ago</abbr> </span></h4>
+														<p>Cras sit amet nibh libero, in gravida  sollicitudin commodo.</p>
+													  </div>
+													</li>
+												</ul>
+											</div><div class="slimScrollBar" style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; right: 1px; height: 116.66666666666666px; background: rgb(161, 178, 189);"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.1; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div></div>
+											<div class="divide-20"></div>
+											<div class="chat-form">
+												<div class="input-group"> 
+													<input type="text" class="form-control" id="dataChannelSend" placeholder="Type here."> 
+													<span class="input-group-btn"> 
+														<button class="btn btn-primary" type="button" id="sendButton">
+														<i class="fa fa-check"></i></button> </span> 
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+						<!--/CHAT-->
+					</div>
+				</div>
+				<!-- /SIDEBAR -->
+		<div id="main-content">
+			<div class="container">
+				<div class="row">
+					<div id="content" class="col-lg-12">
+						<!-- PAGE HEADER-->
+						<div class="row">
+							<div class="col-md-12 box-container ui-sortable">
+								<!-- BOX -->
+								<div class="box">
+									<div class="box-title">
+										<h4><i class="fa fa-reorder"></i><span id="status"></span></h4>
+										<div class="tools">											
+											<a href="javascript:;" class="reload">
+												<i class="fa fa-refresh"></i>
+											</a>
+											<a href="javascript:;" class="collapse">
+												<i class="fa fa-chevron-up"></i>
+											</a>
+											<a href="javascript:;" class="remove">
+												<i class="fa fa-times"></i>
+											</a>
+										</div>
+									</div>
+									<div class="box-body" style="display: block;">
+										<div id="filter-controls" class="btn-group">
+												  <div class="hidden-xs">
+													  <a href="#" class="btn btn-default" data-filter="*">Controls</a>
+													  <button class="btn btn-success" id="start" data-filter=".category_1">Start</button>
+													  <button class="btn btn-info" id="startf" data-filter=".category_2">ScreenShare</button>
+													  <a href="#" class="btn btn-danger" data-filter=".category_3">Mute</a>
+													  <!--
+													  <button class="btn btn-success" id="focus" data-filter=".category_4">Focus</button>  
+													  -->
+													  <a href="#" class="btn btn-warning" data-filter=".category_5">Record</a>
+													  <div class="btn-group dropdown">
+														<button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">
+															Filters	<span class="caret"></span>
+														</button>
+														<ul class="dropdown-menu context" id="filters">
+															<li><a href="#" data-fil="invert">Invert</a></li>
+															<li><a href="#" data-fil="blur">Blur</a></li>
+															<li><a href="#" data-fil="sepia">Sepia</a></li>
+															<li class="divider"></li>
+															<li><a href="#" data-fil="none">None</a></li>
+														</ul>
+													  </div>
+												  </div>
+												  <div class="visible-xs">
+													   <select id="mini_but" class="form-control">
+															<option value="*">Controls
+															</option><option id="start" value="start">mStart
+															</option><option value=".category_2">Mute
+															</option><option value=".category_3">ScreenShare
+															</option><option value=".category_4">Focus
+															</option><option value=".category_5">Record</option>
+															<option value="*">Filters</option>	
+														</select>
+												  </div>
+										</div>
+
+										<div class="row">   
+													<div class="col-md-6">
+														<div class="box border inverse">
+															<div class="box-title">
+																<h4 class="you"><i class="fa fa-money"></i></h4>
+																<div class="tools">
+																	<a href="javascript:;" class="expand">
+																		<i class="fa fa-fullscreen"></i>
+																	</a>
+																	<a href="javascript:;" class="collapse">
+																		<i class="fa fa-chevron-up"></i>
+																	</a>
+																	<a href="javascript:;" class="remove">
+																		<i class="fa fa-times"></i>
+																	</a>
+																</div>
+															</div>
+															<div class="box-body">															
+																  <video id="localVideo" autoplay style="width:100%"></video>
+															</div>
+														</div>														
+													</div>
+													<div class="col-md-6">
+														<div class="box border purple">
+															<div class="box-title">
+																<h4><i class="fa fa-adjust"></i>Friend's Name</h4>
+																<div class="tools">
+																	<a href="javascript:;" class="expand">
+																		<i class="fa fa-fullscreen"></i>
+																	</a>
+																	<a href="javascript:;" class="collapse">
+																		<i class="fa fa-chevron-up"></i>
+																	</a>
+																	<a href="javascript:;" class="remove">
+																		<i class="fa fa-times"></i>
+																	</a>
+																</div>
+															</div>
+															<div class="box-body">									
+																  <video id="remoteVideo" autoplay style="width:100%" ></video>
+															</div>
+														</div>
+													</div>
+										</div>
+									</div>
+								</div>
+								<!-- /BOX -->
+							</div>
+						</div>
+						<!-- /PAGE HEADER -->
+					</div><!-- /CONTENT-->
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--/PAGE -->
+	<!-- JAVASCRIPTS -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!-- JQUERY -->
+	<script src="js/jquery/jquery-2.0.3.min.js"></script>
+	<!-- JQUERY UI-->
+	<script src="js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+	<!-- BOOTSTRAP -->
+	<script src="bootstrap-dist/js/bootstrap.min.js"></script>
+	
+		
+	<!-- DATE RANGE PICKER -->
+	<script src="js/bootstrap-daterangepicker/moment.min.js"></script>
+	
+	<script src="js/bootstrap-daterangepicker/daterangepicker.min.js"></script>
+	<!-- SLIMSCROLL -->
+	<script type="text/javascript" src="js/jQuery-slimScroll-1.3.0/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="js/jQuery-slimScroll-1.3.0/slimScrollHorizontal.min.js"></script>
+	<!-- BOOTBOX -->
+	<script type="text/javascript" src="js/bootbox/bootbox.min.js"></script>
+	<!-- COOKIE -->
+	<script type="text/javascript" src="js/jQuery-Cookie/jquery.cookie.min.js"></script>
+	<!-- CLIPBOARD -->
+	<script type="text/javascript"  src="js/jquery.clipboard.js"></script>
+	<!-- SOCIAL SHARE -->
+	<script type="text/javascript"  src="js/jquery.share.js"></script>
+	<!-- CUSTOM SCRIPT -->
+	<script src="js/script.js"></script>
+	<script src='/socket.io/socket.io.js'></script>
+	<!----Adapter--- -->
+	<script src='js/adapter.js'></script>	
+	
+	<!-------beware-->
+	<script>
+		jQuery(document).ready(function() {		
+			App.setPage("fixed_header_sidebar");  //Set current page
+			App.init(); //Initialise plugins and elements
+
+			$('#mini_but').change(function(e){
+				if($('#mini_but').val()=='start'){startq();}
+				else{e.preventDefault();}
+			});
+
+					//Pop up of Peer users
+		  $(".basic-alertz").click(function(){bootbox.alert("David /n John /n Jennifer");
+		    return false;}); 
+
+		//change video filter effects
+		$( "#filters li a" ).on( "click", function( event ) {
+		    event.preventDefault();
+		    var effect = $(this).attr("data-fil");
+		    $("#localVideo").removeClass('blur').addClass(''+effect);
+		});
+
+	      // change background image
+$( "#sidebar ul.bckg li a" ).on( "click", function( event ) {
+    event.preventDefault();
+    var pth = $(this).attr("href");
+    $("#content").css('background-image', 'url(img/themes/'+pth+'.jpg)');
+});
+
+//Copy to Clipboard
+$('#paperclip').on("click",function(event){
+	event.preventDefault();
+	var clip = $(this);
+	clip.clipboard({
+        path: 'jquery.clipboard.swf',
+        copy: function() {
+            $('#copied').text('Link copied');
+            return $('.roomlink').text();
+        }
+	});
+});
+
+ $('#socialmedia').share({
+        networks: ['email','pinterest','tumblr','googleplus','digg','in1','facebook','twitter','linkedin','stumbleupon'],
+        theme: 'square',
+        urlToShare: ''+$('.roomlink').text()
+    });
+
+
+		});
+	</script>
+	<script type="text/javascript"  src="js/tplus.js"></script>
+	<!-- /JAVASCRIPTS -->
+</body>
+</html>
