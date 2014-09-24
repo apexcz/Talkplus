@@ -1,0 +1,696 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>	
+	<meta charset="utf-8" />
+	<title>TalkPlus-RoomName</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+	<meta name="description" content="Peer-to-Peer Communication Using Webrtc" />
+	<meta name="author" content="Oty Chinedu Stanley" />
+	<!-- FAVICON -->
+	<link rel="shortcut icon" href="img/logo.ico">
+	<!-- STYLESHEETS -->
+	<link rel="stylesheet" type="text/css" href="css/cloud-admin.css" />
+	<link rel="stylesheet" type="text/css" href="css/themes/default.css" id="skin-switcher" />
+	<link rel="stylesheet" type="text/css" href="css/responsive.css" />
+	<link rel="stylesheet" type="text/css" href="css/tplus.css" />
+	
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<!-- DATE RANGE PICKER -->
+	<link rel="stylesheet" type="text/css" href="js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+	<!-- ANIMATE -->
+	<link rel="stylesheet" type="text/css" href="css/animatecss/animate.min.css" />
+	<!-- FONTS -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css' />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+	<!-- HEADER -->
+	<header class="navbar clearfix navbar-fixed-top" id="header">
+		<div class="container">
+				<div class="navbar-brand">
+					<!-- COMPANY LOGO -->
+					<a href="index.html">
+						<img src="img/logo/logo.png" alt="TalkPlus" class="img-responsive" height="30" width="120" />
+					</a>
+					<!-- /COMPANY LOGO -->					
+					<!-- /PROJECT SWITCHER FOR MOBILE -->
+					<!-- SIDEBAR COLLAPSE -->
+					<div id="sidebar-collapse" class="sidebar-collapse btn tip-bottom" data-toggle="tooltip" title="Toggle Sidebar">
+						<i class="fa fa-reorder" data-icon1="fa fa-reorder" data-icon2="fa fa-reorder"></i>
+					</div>
+					<!-- /SIDEBAR COLLAPSE -->
+				</div>				
+				<!-- BEGIN TOP NAVIGATION MENU -->					
+				<ul class="nav navbar-nav pull-right">					
+					<!-- BEGIN USER LOGIN DROPDOWN -->
+					<li class="dropdown user" id="header-user">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="fa fa-link"></i>
+							<span class="username">Invite linkname.com?room=wert</span>
+							<i class="fa fa-angle-down"></i>
+						</a>
+						<!--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-link"></i> Copy to Clipboard</a>-->
+						<ul class="dropdown-menu">
+							<li><a href="#copy" id="paperclip"><i class="fa fa-paperclip"></i> Copy to Clipboard</a></li>
+							<li><a href="login.html"><i class="fa fa-facebook"></i> Facebook</a></li>
+							<li><a href="login.html"><i class="fa fa-google-plus"></i> Gmail</a></li>
+							<li><a href="login.html"><i class="fa fa-twitter"></i> Twitter</a></li>
+						</ul>
+					</li>
+					<!-- END USER LOGIN DROPDOWN -->
+				</ul>
+				<!-- END TOP NAVIGATION MENU -->
+		</div>		
+	</header>
+	<!--/HEADER -->
+	
+	<!-- PAGE -->
+	<section id="page">
+				<!-- SIDEBAR -->
+				<div id="sidebar" class="sidebar sidebar-fixed">
+					<div class="sidebar-menu nav-collapse">
+						<div class="divide-20"></div>
+						<!-- ROOM NAME -->
+						<div class="clearfix">
+							<h3 class="content-title pull-left">RoomName</h3>
+						</div>
+						<!-- /ROOM NAME -->
+						
+						<!-- SIDEBAR MENU -->
+						<ul>							
+							<li><a class="" data-toggle="modal" href="#myModal"><i class="fa fa-desktop fa-fw">
+								</i> <span class="menu-text">Change UserName</span></a></li>
+							<li><a class="" data-toggle="modal" href="#myModal" ><i class="fa fa-desktop fa-fw">
+								</i> <span class="menu-text">List of Users</span></a></li>							
+							<li class="has-sub">
+								<a href="#" class="" id="bg">
+								<i class="fa fa-bookmark-o fa-fw"></i> <span class="menu-text">Background Color</span>
+								<span class="arrow"></span>
+								</a>
+								<ul class="sub">
+									<li><a class="" href="#" id="black"><span class="sub-menu-text">Black</span></a></li><li><a class="" href="#"><span class="sub-menu-text">Yellow</span></a></li>
+									<li><a class="" href="buttons_icons.html"><span class="sub-menu-text">Plain</span></a></li>				
+									<li class="has-sub-sub">
+										<a href="javascript:;" class=""><span class="sub-menu-text">Background Color</span>
+										<span class="arrow"></span>
+										</a>
+										<ul class="sub-sub">
+											<li><a class="" href="#"><span class="sub-sub-menu-text">Item 1</span></a></li>
+											<li><a class="" href="#"><span class="sub-sub-menu-text">Item 2</span></a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>														
+						</ul>
+						<!-- /SIDEBAR MENU -->
+
+						<!--CHAT-->
+						<div class="divide-20"></div>
+							<div class="box-container">
+									<div class="box border red">
+										<div class="box-title">
+											<h4><i class="fa fa-comment"></i>CHAT</h4>
+											<div class="tools">												
+												<a href="javascript:;" class="reload">
+													<i class="fa fa-refresh"></i>
+												</a>
+												<a href="javascript:;" class="collapse">
+													<i class="fa fa-chevron-up"></i>
+												</a>
+												<a href="javascript:;" class="remove">
+													<i class="fa fa-times"></i>
+												</a>
+											</div>
+										</div>
+										<div class="box-body">
+											<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 350px;"><div class="scroller" data-height="350px" data-always-visible="1" data-rail-visible="1" style="overflow: hidden; width: auto; height: 350px;">
+												<ul class="media-list chat-list">
+													<li class="media">													  
+													  <div class="media-body chat-pop">
+														<h4 class="media-heading">John Doe <span class="pull-right"><i class="fa fa-clock-o"></i> <abbr class="timeago" title="Oct 9, 2013">9 months ago</abbr> </span></h4>
+														<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+														
+													  </div>
+													</li>
+													<li class="media">													 
+													  <div class="pull-right media-body chat-pop mod">
+														<h4 class="media-heading">You <span class="pull-left"><abbr class="timeago" title="Oct 10, 2013">9 months ago</abbr> <i class="fa fa-clock-o"></i></span></h4>
+														Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+													  </div>
+													</li>
+													<li class="media">													 
+													  <div class="media-body chat-pop">
+														<h4 class="media-heading">Tim Row <span class="pull-right"><i class="fa fa-clock-o"></i> <abbr class="timeago" title="Oct 10, 2013">9 months ago</abbr> </span></h4>
+														<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+													  </div>
+													</li>
+													<li class="media">													  
+													  <div class="media-body chat-pop">
+														<h4 class="media-heading">John Doe <span class="pull-right"><i class="fa fa-clock-o"></i> <abbr class="timeago" title="Oct 10, 2013">9 months ago</abbr> </span></h4>
+														<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+													  </div>
+													</li>
+												</ul>
+											</div><div class="slimScrollBar" style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; right: 1px; height: 116.66666666666666px; background: rgb(161, 178, 189);"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.1; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div></div>
+											<div class="divide-20"></div>
+											<div class="chat-form">
+												<div class="input-group"> 
+													<input type="text" class="form-control" id="dataChannelSend" disabled placeholder="Type here."> 
+													<span class="input-group-btn"> 
+														<button class="btn btn-primary" type="button">
+														<i class="fa fa-check"></i></button> </span> 
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+						<!--/CHAT-->
+					</div>
+				</div>
+				<!-- /SIDEBAR -->
+				<div id="main-content">
+					<div class="container">
+						<div class="row">
+							<div id="content" class="col-lg-12">						
+								<!-- Videos -->
+								<div class="row">
+									<div class="col-md-12">
+										<!-- BOX -->
+										<div class="box">
+											<div class="box-title">
+												<h4><i class="fa fa-reorder"></i>Room Name</h4>
+												<div class="tools">
+													<a href="#box-config" data-toggle="modal" class="config">
+														<i class="fa fa-cog"></i>
+													</a>
+													<a href="javascript:;" class="reload">
+														<i class="fa fa-refresh"></i>
+													</a>
+													<a href="javascript:;" class="collapse">
+														<i class="fa fa-chevron-up"></i>
+													</a>
+													<a href="javascript:;" class="remove">
+														<i class="fa fa-times"></i>
+													</a>
+												</div>
+											</div>
+											<div class="box-body clearfix" style="display: block;">
+											   <div id="filter-controls" class="btn-group">
+												  <div class="hidden-xs">
+													  <a href="#" class="btn btn-default" data-filter="*">Controls</a>
+													  <button class="btn btn-info" id="start" data-filter=".category_1">Start</button>
+													  <button class="btn btn-info" id="startf" data-filter=".category_2">ScreenShare</button>
+													  <a href="#" class="btn btn-danger" data-filter=".category_3">Mute</a>
+													  <button class="btn btn-success" id="focus" data-filter=".category_4">Focus</button>
+													  <a href="#" class="btn btn-warning" data-filter=".category_5">Record</a>
+													  <div class="btn-group dropdown">
+														<button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">
+															Filters	<span class="caret"></span>
+														</button>
+														<ul class="dropdown-menu context">
+															<li><a href="#">Invert</a></li>
+															<li><a href="#">Blur</a></li>
+															<li><a href="#">Sepia</a></li>
+															<li class="divider"></li>
+															<li><a href="#">None</a></li>
+														</ul>
+													  </div>
+												  </div>
+												  <div class="visible-xs">
+													   <select id="e1" class="form-control">
+															<option value="*">Controls
+															</option><option id="start" value=".category_1">mStart
+															</option><option value=".category_2">Mute
+															</option><option value=".category_3">ScreenShare
+															</option><option value=".category_4">Focus
+															</option><option value=".category_5">Record</option>
+															<option value="*">Filters</option>	
+														</select>
+												  </div>
+											   </div>
+											   <div class="divide-20"></div>
+											<div class="row">   
+														<div class="col-md-6">
+															<div class="box border inverse">
+																<div class="box-title">
+																	<h4><i class="fa fa-money"></i>You</h4>
+																	<div class="tools">
+																		<a href="javascript:;" class="collapse">
+																			<i class="fa fa-chevron-up"></i>
+																		</a>
+																		<a href="javascript:;" class="remove">
+																			<i class="fa fa-times"></i>
+																		</a>
+																	</div>
+																</div>
+																<div class="box-body">
+																	  <video id="localVideo" autoplay style="width:100%"></video>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="box border purple">
+																<div class="box-title">
+																	<h4><i class="fa fa-adjust"></i>Friend's Name</h4>
+																	<div class="tools">
+																		<a href="javascript:;" class="collapse">
+																			<i class="fa fa-chevron-up"></i>
+																		</a>
+																		<a href="javascript:;" class="remove">
+																			<i class="fa fa-times"></i>
+																		</a>
+																	</div>
+																</div>
+																<div class="box-body">									
+																	  <video id="remoteVideo" autoplay style="width:100%" ></video>
+																</div>
+															</div>
+														</div>
+											</div>
+											<!--   
+											   <div id="filter-items" class="row isotope" style="position: relative; overflow: hidden; height: 609px;">
+													<div class="col-md-3 category_1 item isotope-item" style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(0px, 0px, 0px);">
+														<div class="filter-content">
+															<video height="300" id="localVideo"></video>
+															<div class="hover-content animated fadeOut" style="display: block;">
+																<h4>Local </h4>
+																<a class="btn btn-success hover-link">
+																	<i class="fa fa-edit fa-1x"></i>
+																</a>
+																<a class="btn btn-warning hover-link colorbox-button cboxElement" href="img/gallery/1.png" title="Image Title">
+																	<i class="fa fa-search-plus fa-1x"></i>
+																</a>
+															</div>
+														</div>
+													</div>
+													<div id="remotesVideos">
+														<div class="col-md-3 category_2 item isotope-item" style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(275px, 0px, 0px);">
+															<div class="filter-content">
+																<video />
+																<div class="hover-content animated fadeOut" style="display: block;">
+																	<h4>Remote</h4>
+																	<a class="btn btn-success hover-link">
+																		<i class="fa fa-edit fa-1x"></i>
+																	</a>
+																	<a class="btn btn-warning hover-link colorbox-button cboxElement" href="img/gallery/2.jpg" title="Image Title">
+																		<i class="fa fa-search-plus fa-1x"></i>
+																	</a>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-3 category_3 item isotope-item" style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(550px, 0px, 0px);">
+															<div class="filter-content">
+																<img src="file:///C:/Users/Apex/Documents/fwnds/themeko.org_cloudadmin/cloudadminenvironment-fqbevfzncm.elasticbeanstalk.com/img/gallery/3.png" alt="" class="img-responsive">
+																<div class="hover-content animated fadeOut" style="display: block;">
+																	<h4>Image Title</h4>
+																	<a class="btn btn-success hover-link">
+																		<i class="fa fa-edit fa-1x"></i>
+																	</a>
+																	<a class="btn btn-warning hover-link colorbox-button cboxElement" href="img/gallery/3.png" title="Image Title">
+																		<i class="fa fa-search-plus fa-1x"></i>
+																	</a>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-3 category_4 item isotope-item" style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(0px, 203px, 0px);">
+															<div class="filter-content">
+																<img src="file:///C:/Users/Apex/Documents/fwnds/themeko.org_cloudadmin/cloudadminenvironment-fqbevfzncm.elasticbeanstalk.com/img/gallery/4.png" alt="" class="img-responsive">
+																<div class="hover-content animated fadeIn" style="display: block;">
+																	<h4>Image Title</h4>
+																	<a class="btn btn-success hover-link">
+																		<i class="fa fa-edit fa-1x"></i>
+																	</a>
+																	<a class="btn btn-warning hover-link colorbox-button cboxElement" href="img/gallery/4.png" title="Image Title">
+																		<i class="fa fa-search-plus fa-1x"></i>
+																	</a>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-3 category_1 item isotope-item" style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(275px, 203px, 0px);">
+															<div class="filter-content">
+																<img src="file:///C:/Users/Apex/Documents/fwnds/themeko.org_cloudadmin/cloudadminenvironment-fqbevfzncm.elasticbeanstalk.com/img/gallery/5.png" alt="" class="img-responsive">
+																<div class="hover-content animated fadeOut" style="display: block;">
+																	<h4>Image Title</h4>
+																	<a class="btn btn-success hover-link">
+																		<i class="fa fa-edit fa-1x"></i>
+																	</a>
+																	<a class="btn btn-warning hover-link colorbox-button cboxElement" href="img/gallery/5.png" title="Image Title">
+																		<i class="fa fa-search-plus fa-1x"></i>
+																	</a>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-3 category_2 item isotope-item" style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(550px, 203px, 0px);">
+															<div class="filter-content">
+																<img src="file:///C:/Users/Apex/Documents/fwnds/themeko.org_cloudadmin/cloudadminenvironment-fqbevfzncm.elasticbeanstalk.com/img/gallery/8.png" alt="" class="img-responsive">
+																<div class="hover-content animated fadeOut" style="display: block;">
+																	<h4>Image Title</h4>
+																	<a class="btn btn-success hover-link">
+																		<i class="fa fa-edit fa-1x"></i>
+																	</a>
+																	<a class="btn btn-warning hover-link colorbox-button cboxElement" href="img/gallery/8.png" title="Image Title">
+																		<i class="fa fa-search-plus fa-1x"></i>
+																	</a>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-3 category_4 item isotope-item" style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(0px, 406px, 0px);">
+															<div class="filter-content">
+																<img src="file:///C:/Users/Apex/Documents/fwnds/themeko.org_cloudadmin/cloudadminenvironment-fqbevfzncm.elasticbeanstalk.com/img/gallery/7.jpg" alt="" class="img-responsive">
+																<div class="hover-content">
+																	<h4>Image Title</h4>
+																	<a class="btn btn-success hover-link">
+																		<i class="fa fa-edit fa-1x"></i>
+																	</a>
+																	<a class="btn btn-warning hover-link colorbox-button cboxElement" href="img/gallery/7.jpg" title="Image Title">
+																		<i class="fa fa-search-plus fa-1x"></i>
+																	</a>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-3 category_4 item isotope-item" style="position: absolute; left: 0px; top: 0px; -webkit-transform: translate3d(275px, 406px, 0px);">
+															<div class="filter-content">
+																<img src="file:///C:/Users/Apex/Documents/fwnds/themeko.org_cloudadmin/cloudadminenvironment-fqbevfzncm.elasticbeanstalk.com/img/gallery/2.jpg" alt="" class="img-responsive">
+																<div class="hover-content">
+																	<h4>Image Title</h4>
+																	<a class="btn btn-success hover-link">
+																		<i class="fa fa-edit fa-1x"></i>
+																	</a>
+																	<a class="btn btn-warning hover-link colorbox-button cboxElement" href="img/gallery/2.jpg" title="Image Title">
+																		<i class="fa fa-search-plus fa-1x"></i>
+																	</a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											-->
+											</div>
+										</div>
+										<!-- /BOX -->
+									</div>
+								</div>
+								<!-- Videos -->
+							</div><!-- /CONTENT-->
+						</div>
+					</div>
+				</div>
+		
+	</section>	
+	<!--/PAGE -->	
+	<!-- JAVASCRIPTS -->
+	<script>
+			var localStream, localPeerConnection, remotePeerConnection;
+			var localVideo = document.querySelector('#localVideo');
+			var remoteVideo = document.querySelector('#remoteVideo');
+			var startButton = document.getElementById("start");
+			var focusButton = document.getElementById("focus");
+			startButton.disabled = false;
+			startButton.onclick = startq;
+			focusButton.onclick = focus;
+
+			function trace(text) {
+			  // This function is used for logging.
+			  if (text[text.length - 1] == '\n') {
+			    text = text.substring(0, text.length - 1);
+			  }
+			  console.log((performance.now() / 1000).toFixed(3) + ": " + text);
+			}
+
+			function handleUserMedia(stream) {
+			  console.log('Adding local stream.');
+			  localVideo.src = window.URL.createObjectURL(stream);
+			  localStream = stream;			 
+			}
+
+			function handleUserMediaError(error){
+			  console.log('getUserMedia error: ', error);
+			}			
+
+			navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+			var constraints = {video: true,audio:true};
+	/**		var constraints ={
+				video:{
+					mandatory:{
+						chromeMediaSource:'screen'
+					}
+				}
+			};
+**/
+			function startq() {
+			  trace("Requesting local stream");
+			  startButton.value = "Stop";
+			  console.log('Getting user media with constraints', constraints);
+			  navigator.getUserMedia(constraints, handleUserMedia, handleUserMediaError);
+			    if (localStream.getVideoTracks().length > 0) {
+			    trace('Using video device: ' + localStream.getVideoTracks()[0].label);
+				}
+			    if (localStream.getAudioTracks().length > 0) {
+			    	trace('Using audio device: ' + localStream.getAudioTracks()[0].label);
+			  	}
+			  	
+			  	var servers = null;
+
+				  localPeerConnection = new RTCPeerConnection(servers);
+				  trace("Created local peer connection object localPeerConnection");
+				  localPeerConnection.onicecandidate = gotLocalIceCandidate;
+
+				  remotePeerConnection = new RTCPeerConnection(servers);
+				  trace("Created remote peer connection object remotePeerConnection");
+				  remotePeerConnection.onicecandidate = gotRemoteIceCandidate;
+				  remotePeerConnection.onaddstream = gotRemoteStream;
+
+				  localPeerConnection.addStream(localStream);
+				  trace("Added localStream to localPeerConnection");
+				  localPeerConnection.createOffer(gotLocalDescription,handleError);
+			}
+
+			function gotLocalDescription(description){
+  localPeerConnection.setLocalDescription(description);
+  trace("Offer from localPeerConnection: \n" + description.sdp);
+  remotePeerConnection.setRemoteDescription(description);
+  remotePeerConnection.createAnswer(gotRemoteDescription,handleError);
+}
+
+function gotRemoteDescription(description){
+  remotePeerConnection.setLocalDescription(description);
+  trace("Answer from remotePeerConnection: \n" + description.sdp);
+  localPeerConnection.setRemoteDescription(description);
+}
+
+function hangup() {
+  trace("Ending call");
+  localPeerConnection.close();
+  remotePeerConnection.close();
+  localPeerConnection = null;
+  remotePeerConnection = null;
+  hangupButton.disabled = true;
+  callButton.disabled = false;
+}
+
+function gotRemoteStream(event){
+  remoteVideo.src = URL.createObjectURL(event.stream);
+  trace("Received remote stream");
+}
+
+function gotLocalIceCandidate(event){
+  if (event.candidate) {
+    remotePeerConnection.addIceCandidate(new RTCIceCandidate(event.candidate));
+    trace("Local ICE candidate: \n" + event.candidate.candidate);
+  }
+}
+
+function gotRemoteIceCandidate(event){
+  if (event.candidate) {
+    localPeerConnection.addIceCandidate(new RTCIceCandidate(event.candidate));
+    trace("Remote ICE candidate: \n " + event.candidate.candidate);
+  }
+}
+
+function handleError(){}
+
+</script>
+
+<script>
+
+/////////  TEXT CHAT ///////////////////
+
+var sendChannel, receiveChannel;
+
+function createConnection() {
+  var servers = null;
+  window.localPeerConnection = new RTCPeerConnection(servers,
+    {optional: [{RtpDataChannels: true}]});
+  trace('Created local peer connection object localPeerConnection');
+
+  try {
+    // Reliable Data Channels not yet supported in Chrome
+    sendChannel = localPeerConnection.createDataChannel("sendDataChannel",
+      {reliable: false});
+    trace('Created send data channel');
+  } catch (e) {
+    alert('Failed to create data channel. ' +
+          'You need Chrome M25 or later with RtpDataChannel enabled');
+    trace('createDataChannel() failed with exception: ' + e.message);
+  }
+  localPeerConnection.onicecandidate = gotLocalCandidate;
+  sendChannel.onopen = handleSendChannelStateChange;
+  sendChannel.onclose = handleSendChannelStateChange;
+
+  window.remotePeerConnection = new RTCPeerConnection(servers,
+    {optional: [{RtpDataChannels: true}]});
+  trace('Created remote peer connection object remotePeerConnection');
+
+  remotePeerConnection.onicecandidate = gotRemoteIceCandidate;
+  remotePeerConnection.ondatachannel = gotReceiveChannel;
+
+  localPeerConnection.createOffer(gotLocalDescription,handleError);
+  
+}
+
+function sendData() {
+  var data = document.getElementById("dataChannelSend").value;
+  sendChannel.send(data);
+  trace('Sent data: ' + data);
+}
+function closeDataChannels() {
+  trace('Closing data channels');
+  sendChannel.close();
+  trace('Closed data channel with label: ' + sendChannel.label);
+  receiveChannel.close();
+  trace('Closed data channel with label: ' + receiveChannel.label);
+  localPeerConnection.close();
+  remotePeerConnection.close();
+  localPeerConnection = null;
+  remotePeerConnection = null;
+  trace('Closed peer connections');
+  dataChannelSend.value = "";
+  dataChannelReceive.value = "";
+  dataChannelSend.disabled = true;
+  dataChannelSend.placeholder = "Press Start, enter some text, then press Send.";
+}
+
+function gotLocalDescription(desc) {
+  localPeerConnection.setLocalDescription(desc);
+  trace('Offer from localPeerConnection \n' + desc.sdp);
+  remotePeerConnection.setRemoteDescription(desc);
+  remotePeerConnection.createAnswer(gotRemoteDescription,handleError);
+}
+
+function gotRemoteDescription(desc) {
+  remotePeerConnection.setLocalDescription(desc);
+  trace('Answer from remotePeerConnection \n' + desc.sdp);
+  localPeerConnection.setRemoteDescription(desc);
+}
+
+function gotLocalCandidate(event) {
+  trace('local ice callback');
+  if (event.candidate) {
+    remotePeerConnection.addIceCandidate(event.candidate);
+    trace('Local ICE candidate: \n' + event.candidate.candidate);
+  }
+}
+
+function gotRemoteIceCandidate(event) {
+  trace('remote ice callback');
+  if (event.candidate) {
+    localPeerConnection.addIceCandidate(event.candidate);
+    trace('Remote ICE candidate: \n ' + event.candidate.candidate);
+  }
+}
+
+function gotReceiveChannel(event) {
+  trace('Receive Channel Callback');
+  receiveChannel = event.channel;
+  receiveChannel.onmessage = handleMessage;
+  receiveChannel.onopen = handleReceiveChannelStateChange;
+  receiveChannel.onclose = handleReceiveChannelStateChange;
+}
+
+function handleMessage(event) {
+  trace('Received message: ' + event.data);
+  document.getElementById("dataChannelReceive").value = event.data;
+}
+
+function handleSendChannelStateChange() {
+  var readyState = sendChannel.readyState;
+  trace('Send channel state is: ' + readyState);
+  if (readyState == "open") {
+    dataChannelSend.disabled = false;
+    dataChannelSend.focus();
+    dataChannelSend.placeholder = "";
+    sendButton.disabled = false;
+    closeButton.disabled = false;
+  } else {
+    dataChannelSend.disabled = true;
+    sendButton.disabled = true;
+    closeButton.disabled = true;
+  }
+}
+
+function handleReceiveChannelStateChange() {
+  var readyState = receiveChannel.readyState;
+  trace('Receive channel state is: ' + readyState);
+}
+
+function handleError(){}
+
+
+			
+
+
+		</script>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!-- JQUERY -->
+	<script src="js/jquery/jquery-2.0.3.min.js"></script>
+	<!-- JQUERY UI-->
+	<script src="js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+	<!-- BOOTSTRAP -->
+	<script src="bootstrap-dist/js/bootstrap.min.js"></script>
+	
+	<!----Adapter--- -->
+	<script src='js/adapter.js'></script>
+	<!-------- Clipboard------------ -->
+	<script src="js/jquery.zclip.js"></script>
+	<!-- DATE RANGE PICKER -->
+	<script src="js/bootstrap-daterangepicker/moment.min.js"></script>
+	
+	<script src="js/bootstrap-daterangepicker/daterangepicker.min.js"></script>
+	<!-- SLIMSCROLL -->
+	<script type="text/javascript" src="js/jQuery-slimScroll-1.3.0/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="js/jQuery-slimScroll-1.3.0/slimScrollHorizontal.min.js"></script>
+	<!-- BLOCK UI -->
+	<script type="text/javascript" src="js/jQuery-BlockUI/jquery.blockUI.min.js"></script>
+	<!-- ISOTOPE -->
+	<script type="text/javascript" src="js/isotope/jquery.isotope.min.js"></script>
+	<script type="text/javascript" src="js/isotope/imagesloaded.pkgd.min.min.js"></script>
+	<!-- COLORBOX -->
+	<script type="text/javascript" src="js/colorbox/jquery.colorbox.min.js"></script>
+
+	<!-- COOKIE -->
+	<script type="text/javascript" src="js/jQuery-Cookie/jquery.cookie.min.js"></script>
+	<!-- CUSTOM SCRIPT -->
+	<script type="text/javascript"  src="js/script.js"></script>
+	<script type="text/javascript"  src="js/main.js"></script>
+	<script type="text/javascript"  src="js/tplus.js"></script>
+	<script>
+		jQuery(document).ready(function() {		
+			App.setPage("fixed_header_sidebar");  //Set current page
+			App.init(); //Initialise plugins and elements
+
+			
+
+		    //Copy to clipboard
+		     $("a#paperclip").zclip({
+		        path:"ZeroClipboard.swf",
+		        copy:function(){return "hello mew";}
+		        return false;
+		     });
+		     
+		});
+
+		//$('#start').click(function(){alert("edu");});
+	</script>
+	<!-- /JAVASCRIPTS -->
+</body>
+</html>
