@@ -1,10 +1,8 @@
-var static = require('node-static');
-var http = require('http');
-var file = new(static.Server)();
-//Creates a Server at port 2014
-var app = http.createServer(function (req, res) {
-  file.serve(req, res);
-}).listen(process.env.PORT || 2014);
+var express = require('express'),
+	app = express(),
+	server = require('http').createServer(app),
+	io = require('socket.io').listen(server);	
+server.listen(process.env.PORT || 2014);
 
 app.get('/', function(req,res){
 	res.sendFile(__dirname + '/index.html');
