@@ -6,6 +6,9 @@ var app = http.createServer(function (req, res) {
   file.serve(req, res);
 }).listen(process.env.PORT || 2014);
 
+app.get('/', function(req,res){
+	res.sendFile(__dirname + '/index.html');
+});	
 users = {};
 
 var io = require('socket.io').listen(app);
