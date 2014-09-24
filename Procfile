@@ -1,2 +1,1 @@
-heroku ps:scale web=1 
-web: node web.js
+web: node cloud/server.js
