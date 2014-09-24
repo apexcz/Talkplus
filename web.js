@@ -4,6 +4,9 @@ var express = require('express'),
 	io = require('socket.io').listen(server);	
 server.listen(process.env.PORT || 2014);
 
+app.use(express.static(path.join(__dirname, 'css')));
+
+
 app.get('/', function(req,res){
 	res.sendfile(__dirname + '/index.html');
 });	
