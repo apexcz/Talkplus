@@ -96,9 +96,9 @@
 
 						<!-- SIDEBAR MENU -->
 						<ul>							
-							<li><a class="basic-alertd" data-toggle="modal" href="#"><i class="fa fa-desktop fa-fw">
+							<li><a class="change_username" data-toggle="modal" href="#"><i class="fa fa-desktop fa-fw">
 								</i> <span class="menu-text">Change UserName</span></a></li>
-							<li><a class="basic-alertz" data-toggle="modal" href="#" ><i class="fa fa-desktop fa-fw">
+							<li><a class="list_users" data-toggle="modal" href="#" ><i class="fa fa-desktop fa-fw">
 								</i> <span class="menu-text">List of Users</span></a></li>							
 							<li class="has-sub">
 								<a href="#" class="" id="bg">
@@ -272,7 +272,7 @@
 													<div class="col-md-6">
 														<div class="box border purple">
 															<div class="box-title">
-																<h4><i class="fa fa-adjust"></i>Friend's Name</h4>
+																<h4><i class="fa fa-adjust friend"></i>Friend's Name</h4>
 																<div class="tools">
 																	<a href="javascript:;" class="expand">
 																		<i class="fa fa-fullscreen"></i>
@@ -345,9 +345,10 @@
 				else{e.preventDefault();}
 			});
 
-					//Pop up of Peer users
-		  $(".basic-alertz").click(function(){bootbox.alert("David /n John /n Jennifer");
-		    return false;}); 
+
+		
+
+
 
 		//change video filter effects
 		$( "#filters li a" ).on( "click", function( event ) {

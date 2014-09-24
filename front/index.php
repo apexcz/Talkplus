@@ -197,7 +197,7 @@
                     </div>
                     <h3>Step 3: Enjoy Chat</h3>
                     <div class="content">
-                        Once they click the link, they automatically appear on your screen.Enjoy your chat.
+                        Once other guests click the link, they will automatically appear on your screen.Enjoy your chat.
                     </div>
                 </div>
             </div>           

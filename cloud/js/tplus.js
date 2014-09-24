@@ -39,19 +39,19 @@ var sdpConstraints = {'mandatory': {
 
 /////////////////////////////////////////////
 
-var room = 'UNN';
+var room='UNN' ;
 //location.pathname.substring(1);
-var usry='Zim';
+var usry='OTY';
 var socket = io.connect();
 
-if (room == '') {
+if (room === '') {
 //window.location.href="http://localhost/tp2/front/";
   room = prompt('Enter room name:');
   usry = prompt('Enter user name:');
-  //room = 'NACOSS';
-} else {
+} 
+else {
   //
-  if(usry != ''){
+  if(usry !== ''){
     $('.you').append(usry);
     console.log('Create or join room', room );
     socket.emit('create or join', {rm:room,nick:usry});
@@ -70,6 +70,7 @@ socket.on('created', function (room){
 });
 
 socket.on('full', function (room){
+  setStatus("Room "+ room +" is full");
   console.log('Room ' + room + ' is full');
 });
 
@@ -80,13 +81,79 @@ socket.on('join', function (room){
 });
 
 socket.on('joined', function (room){
-  console.log('This peer has joined room ' + room);
+  console.log('This peer' + room.n +' has joined room ' + room.r);
+  setStatus('This peer' + room.n +' has joined room ' + room.r);
   isChannelReady = true;
 });
 
 socket.on('log', function (array){
   console.log.apply(console, array);
 });
+
+ 
+
+//Modal Prompt to change username
+$(".change_username").click(function(e){
+  e.preventDefault();
+  chg_username();
+    
+
+});  
+
+function chg_username(){
+
+  var msg_body='<div class="control-group"><label>Username :</label><input id="usernme" type="text" class="span2"><span class="help-inline hide">Not empty !</span></div>';
+    bootbox.dialog({
+      message:msg_body,
+      title:"Change Username",
+      buttons:{success:{label:"Chat!",className:"btn-success",callback:function(){
+           /**
+               * if the username is not entered : error
+               */
+              username = $("#usernme");
+              if(username.val() == ""){
+                  username.parent('div').addClass("error");
+                  username.siblings('span').removeClass('hide');
+              /**
+               * else write the nickname in the right of the navbar
+               * and the Modal Connection closes when the user click on the "close button"
+               */
+              } else {
+                  usry = username.val();
+                  socket.emit('create or join', {rm:room,nick:usry});
+                //window.location.href="http://localhost:2014/?room="+rooy+"&user="+username.val();
+                  //$('.you').text(username.val()); 
+                  //initialize();
+              }
+
+    }}}});
+}
+
+//Pop up of Peer users
+$(".list_users").click(function(e){
+  e.preventDefault();
+
+  socket.on('listusers', function(data){
+          var html='<table class="table table-striped"><thead><tr><th>#</th><th>Username</th><th>Time Joined</th></tr></thead><tbody><tr>';                      
+          
+          for(i=0; i<data.length;i++){
+            html += '<td>'+i+'</td><td>'+data[i] + '</td><td>Date</td>';
+          }
+          html +=' </tr></tbody></table>';
+          bootbox.alert({
+          message:html,
+          title:"List of Users",
+          });
+  });
+  
+});
+
+
+
+
+
+
+
 
 ////////////////////////////////////////////////
 
