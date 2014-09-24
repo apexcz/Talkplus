@@ -4,7 +4,7 @@ var file = new(static.Server)();
 //Creates a Server at port 2014
 var app = http.createServer(function (req, res) {
   file.serve(req, res);
-}).listen(2014);
+}).listen(process.env.PORT || 2014);
 
 users = {};
 
