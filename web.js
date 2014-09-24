@@ -5,7 +5,7 @@ var express = require('express'),
 server.listen(process.env.PORT || 2014);
 
 app.get('/', function(req,res){
-	res.sendFile(__dirname + '/index.html');
+	res.sendfile(__dirname + '/index.html');
 });	
 users = {};
 
