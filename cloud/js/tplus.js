@@ -39,7 +39,49 @@ var sdpConstraints = {'mandatory': {
 
 /////////////////////////////////////////////
 
-var room='UNN' ;
+var room = window.location.hash.slice(1);
+if (room === '') {
+//  room = prompt('Enter room name:');
+  room = 'foo';
+} else {
+  //
+}
+
+var socket = io.connect();
+
+if (room !== '') {
+  console.log('Create or join room', room);
+  socket.emit('create or join', room);
+}
+
+socket.on('created', function (room){
+  console.log('Created room ' + room);
+  isInitiator = true;
+});
+
+socket.on('full', function (room){
+  console.log('Room ' + room + ' is full');
+});
+
+socket.on('join', function (room){
+  console.log('Another peer made a request to join room ' + room);
+  console.log('This peer is the initiator of room ' + room + '!');
+  isChannelReady = true;
+});
+
+socket.on('joined', function (room){
+  console.log('This peer has joined room ' + room);
+  isChannelReady = true;
+});
+
+socket.on('log', function (array){
+  console.log.apply(console, array);
+});
+
+//////////////
+
+
+/**var room='UNN' ;
 //location.pathname.substring(1);
 var usry='OTY';
 var socket = io.connect();
@@ -59,10 +101,6 @@ else {
 
   }
 }
-
-
-
-
 
 socket.on('created', function (room){
   console.log('Created room ' + room);
@@ -90,7 +128,7 @@ socket.on('log', function (array){
   console.log.apply(console, array);
 });
 
- 
+ */
 
 //Modal Prompt to change username
 $(".change_username").click(function(e){
