@@ -2,17 +2,13 @@
   "name": "Talkplus",
   "version": "0.0.1",
   "description": "WebRTC talkplus",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://bitbucket.org/webrtc/codelab"
-  },
   "keywords": [
     "webrtc",
-    "codelab"
+    "talkplus"
   ],
   "author": "Oty",
   "license": "MIT",
