@@ -1,15 +1,16 @@
 var express = require('express'),
 	app = express(),
-	//server = require('http').createServer(app),
+	server = require('http').createServer(app),
 	path = require('path'),
-	io = require('socket.io').listen(app);	
+	io = require('socket.io').listen(server);	
 	users = {};
+
 	
-app.listen(process.env.PORT || 2014);
+server.listen(process.env.PORT || 2014);
 
 app.use(express.static(__dirname + '/cloud'));
 app.use(express.urlencoded());
-app.use(express.favicon(path.join(__dirname, 'cloud/img/favicon.ico')));
+app.use(express.favicon(path.join(__dirname, 'img/favicon.ico')));
 
 app.get('/', function(req,res){
 	res.sendfile(__dirname + '/index.html');
@@ -37,10 +38,6 @@ console.log('Listening on port 2014');
 
 
 
-
-
-//var io = require('socket.io').listen(app);
-
 io.sockets.on('connection', function (socket){
 
  
@@ -53,11 +50,14 @@ io.sockets.on('connection', function (socket){
 	}
 
 	socket.on('message', function (message) {
-		log('Got message: ', message);
+		log('Server Got message: ', message);
     // For a real app, should be room only (not broadcast)
-		socket.broadcast.emit('message', message);
+
+    	io.sockets.emit('message', message);
+		//socket.broadcast.emit('message', message);
 	});
 
+	
 	socket.on('create or join', function (room) {
 		var numClients = io.sockets.clients(room.rm).length;
 
@@ -77,7 +77,7 @@ io.sockets.on('connection', function (socket){
 			socket.nicky = room.rm;
 			users[socket.nicky] = socket;
 			updateNicknames();
-			$('.friend').append(room.nick);
+			log('A new Peer detected: ', room.nick);			
 			socket.emit('joined', {r:room.rm,n:room.nick});
 		} else { // max two clients
 			socket.emit('full', room.rm);
@@ -89,7 +89,33 @@ io.sockets.on('connection', function (socket){
 
 	function updateNicknames(){
 	io.sockets.emit('listusers',Object.keys(users));
-}
+	}
+
+	
+
+	/* WORKING
+	socket.on('create or join', function (room) {
+		var numClients = io.sockets.clients(room).length;
+
+		log('Room ' + room + ' has ' + numClients + ' client(s)');
+		log('Request to create or join room', room);
+
+		if (numClients == 0){
+			socket.join(room);
+			socket.emit('created', room);
+		} else if (numClients == 1) {
+			io.sockets.in(room).emit('join', room);
+			socket.join(room);
+			socket.emit('joined', room);
+		} else { // max two clients
+			socket.emit('full', room);
+		}
+		socket.emit('emit(): client ' + socket.id + ' joined room ' + room);
+		socket.broadcast.emit('broadcast(): client ' + socket.id + ' joined room ' + room);
+
+	});
+
+	*/
 
 });
 

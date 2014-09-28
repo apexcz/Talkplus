@@ -63,27 +63,7 @@
 	
 	<!-- PAGE -->
 	<section id="page">
-		<!-- Username Prompt -->
-    <div class="modal hide fade" id="UsernameModal" role="dialog">
-
-        <div class="modal-header">
-          <h3>Talk Plus - Username</h3>
-        </div>
-
-        <div class="modal-body">
-          <div class="control-group">
-            <label>Username :</label>
-            <input id="username" type="text" class="span2">
-            <span class="help-inline hide">Not empty !</span>
-          </div>
-        </div>
-
-        <div class="modal-footer">
-        <button id="enter" class="btn btn-primary">Chat</button>
-        </div>
-
-    </div>
-<!-- End of Username Prompt -->
+		
 				<!-- SIDEBAR -->
 				<div id="sidebar" class="sidebar sidebar-fixed">
 					<div class="sidebar-menu nav-collapse">
@@ -98,7 +78,7 @@
 						<ul>							
 							<li><a class="change_username" data-toggle="modal" href="#"><i class="fa fa-desktop fa-fw">
 								</i> <span class="menu-text">Change UserName</span></a></li>
-							<li><a class="list_users" data-toggle="modal" href="#" ><i class="fa fa-desktop fa-fw">
+							<li><a class="users_list" href="#" ><i class="fa fa-desktop fa-fw">
 								</i> <span class="menu-text">List of Users</span></a></li>							
 							<li class="has-sub">
 								<a href="#" class="" id="bg">
@@ -106,18 +86,13 @@
 								<span class="arrow"></span>
 								</a>
 								<ul class="sub bckg">
-									<li><a class="" href="01" id="black"><span class="sub-menu-text">Black</span></a></li>
-									<li><a class="" href="02"><span class="sub-menu-text">Yellow</span></a></li>
-									<li><a class="" href="03"><span class="sub-menu-text">Plain</span></a></li>				
-									<li class="has-sub-sub">
-										<a href="javascript:;" class=""><span class="sub-menu-text">Background Color</span>
-										<span class="arrow"></span>
-										</a>
-										<ul class="sub-sub">
-											<li><a class="" href="#"><span class="sub-sub-menu-text">Item 1</span></a></li>
-											<li><a class="" href="#"><span class="sub-sub-menu-text">Item 2</span></a></li>
-										</ul>
-									</li>
+									<li><a class="" href="01" id="black"><span class="sub-menu-text">Brown</span></a></li>
+									<li><a class="" href="02"><span class="sub-menu-text">White</span></a></li>
+									<li><a class="" href="03"><span class="sub-menu-text">Ash</span></a></li>
+									<li><a class="" href="04" id="black"><span class="sub-menu-text">Brown</span></a></li>
+									<li><a class="" href="05"><span class="sub-menu-text">White</span></a></li>
+									<li><a class="" href="06"><span class="sub-menu-text">Ash</span></a></li>					
+									
 								</ul>
 							</li>														
 						</ul>
@@ -237,10 +212,9 @@
 												  <div class="visible-xs">
 													   <select id="mini_but" class="form-control">
 															<option value="*">Controls
-															</option><option id="start" value="start">mStart
+															</option><option id="start" value="start">Start
 															</option><option value=".category_2">Mute
 															</option><option value=".category_3">ScreenShare
-															</option><option value=".category_4">Focus
 															</option><option value=".category_5">Record</option>
 															<option value="*">Filters</option>	
 														</select>
@@ -272,7 +246,7 @@
 													<div class="col-md-6">
 														<div class="box border purple">
 															<div class="box-title">
-																<h4><i class="fa fa-adjust friend"></i>Friend's Name</h4>
+																<h4 class="friend"><i class="fa fa-adjust"></i></h4>
 																<div class="tools">
 																	<a href="javascript:;" class="expand">
 																		<i class="fa fa-fullscreen"></i>
@@ -330,7 +304,7 @@
 	<script type="text/javascript"  src="js/jquery.share.js"></script>
 	<!-- CUSTOM SCRIPT -->
 	<script src="js/script.js"></script>
-	<script src='js/socket.io.js'></script>
+	<script src='/socket.io/socket.io.js'></script>
 	<!----Adapter--- -->
 	<script src='js/adapter.js'></script>	
 	

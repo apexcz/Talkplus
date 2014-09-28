@@ -5,7 +5,7 @@
 var sendChannel;
 var sendButton = document.getElementById("sendButton");
 var sendTextarea = document.getElementById("dataChannelSend");
-//var chatbox = document.getElementById("chatbox");
+var chatbox = document.getElementById("chatbox");
 //var receiveTextarea = document.getElementById("dataChannelReceive");
 
 sendButton.onclick = sendData;
@@ -38,11 +38,11 @@ var sdpConstraints = {'mandatory': {
   'OfferToReceiveVideo':true }};
 
 /////////////////////////////////////////////
-
+/* WORKING
 var room = window.location.hash.slice(1);
 if (room === '') {
 //  room = prompt('Enter room name:');
-  room = 'foo';
+  room = 'Talkplus';
 } else {
   //
 }
@@ -65,7 +65,7 @@ socket.on('full', function (room){
 
 socket.on('join', function (room){
   console.log('Another peer made a request to join room ' + room);
-  console.log('This peer is the initiator of room ' + room + '!');
+  //console.log('This peer is the initiator of room ' + room + '!');
   isChannelReady = true;
 });
 
@@ -77,29 +77,22 @@ socket.on('joined', function (room){
 socket.on('log', function (array){
   console.log.apply(console, array);
 });
-
+*/
 //////////////
 
 
-/**var room='UNN' ;
-//location.pathname.substring(1);
+var room = window.location.hash.slice(1);
 var usry='OTY';
 var socket = io.connect();
 
 if (room === '') {
 //window.location.href="http://localhost/tp2/front/";
   room = prompt('Enter room name:');
-  usry = prompt('Enter user name:');
+  enter_username();
 } 
 else {
   //
-  if(usry !== ''){
-    $('.you').append(usry);
-    console.log('Create or join room', room );
-    socket.emit('create or join', {rm:room,nick:usry});
-  }else{
-
-  }
+  enter_username();
 }
 
 socket.on('created', function (room){
@@ -119,8 +112,9 @@ socket.on('join', function (room){
 });
 
 socket.on('joined', function (room){
-  console.log('This peer' + room.n +' has joined room ' + room.r);
-  setStatus('This peer' + room.n +' has joined room ' + room.r);
+  $('.friend').append(room.n);
+  console.log('This peer ' + room.n +' has joined room ' + room.r);
+  setStatus('This peer ' + room.n +' has joined room ' + room.r);
   isChannelReady = true;
 });
 
@@ -128,27 +122,27 @@ socket.on('log', function (array){
   console.log.apply(console, array);
 });
 
- */
+ 
 
 //Modal Prompt to change username
 $(".change_username").click(function(e){
   e.preventDefault();
-  chg_username();
+  enter_username();
     
 
 });  
 
-function chg_username(){
+function enter_username(){
 
   var msg_body='<div class="control-group"><label>Username :</label><input id="usernme" type="text" class="span2"><span class="help-inline hide">Not empty !</span></div>';
     bootbox.dialog({
       message:msg_body,
-      title:"Change Username",
+      title:"Enter Username",
       buttons:{success:{label:"Chat!",className:"btn-success",callback:function(){
            /**
                * if the username is not entered : error
                */
-              username = $("#usernme");
+              var username = $("#usernme");
               if(username.val() == ""){
                   username.parent('div').addClass("error");
                   username.siblings('span').removeClass('hide');
@@ -158,17 +152,19 @@ function chg_username(){
                */
               } else {
                   usry = username.val();
+                  console.log('Create or join room', room );
                   socket.emit('create or join', {rm:room,nick:usry});
                 //window.location.href="http://localhost:2014/?room="+rooy+"&user="+username.val();
-                  //$('.you').text(username.val()); 
-                  //initialize();
+                  $('.you').text(username.val()); 
+
+                  
               }
 
     }}}});
 }
 
 //Pop up of Peer users
-$(".list_users").click(function(e){
+$(".users_list").click(function(e){
   e.preventDefault();
 
   socket.on('listusers', function(data){
@@ -274,17 +270,7 @@ $('.rnm').html(room);
 
 //////////////
 
-/**
-function handleUserMedia(stream) {
-  console.log('Adding local stream.');
-  localVideo.src = window.URL.createObjectURL(stream);
-  localStream = stream;
-  sendMessage('got user media');
-  if (isInitiator) {
-    maybeStart();
-  }
-}
-*/
+
 
 function handleUserMedia(stream) {
   localStream = stream;
@@ -303,13 +289,13 @@ function handleUserMediaError(error){
 var constraints = {video: true, audio:true};
 
 function startq() {
-      sendMessage('Requesting local stream');
+      //sendMessage('Requesting local stream');
       startButton.value = "Stop";
       console.log('Getting user media with constraints', constraints);
       //navigator.getUserMedia(constraints, handleUserMedia, handleUserMediaError);
       getUserMedia(constraints, handleUserMedia, handleUserMediaError);
 
-      console.log('Getting user media with constraints', constraints);
+      console.log('Getting user media with constraints', JSON.stringify(constraints));
 
         /**if (localStream.getVideoTracks().length > 0) {
         sendMessage('Using video device: ' + localStream.getVideoTracks()[0].label);
@@ -329,7 +315,7 @@ if (location.hostname != "localhost") {
 
 
 function maybeStart() {
-  if (!isStarted && typeof localStream != 'undefined' && isChannelReady) {
+  if (!isStarted && localStream && isChannelReady) {
     createPeerConnection();
     pc.addStream(localStream);
     isStarted = true;
@@ -385,7 +371,7 @@ function sendData() {
   sendChannel.send(data);
   trace('Sent data: ' + data);
 
- $('#chatbox').append('<li class="media"><div class="pull-right media-body chat-pop mod"><h4 class="media-heading">'+ room +'<span class="pull-left"><abbr class="timeago" title="Oct 9, 2013">'+d.getHours()+'hours</abbr><i class="fa fa-clock-o"></i> </span></h4><p>'+event.data+'</p></div></li>');
+ $('#chatbox').append('<li class="media"><div class="pull-right media-body chat-pop mod"><h4 class="media-heading">room<span class="pull-left"><abbr class="timeago" title="Oct 9, 2013">8 hours</abbr><i class="fa fa-clock-o"></i> </span></h4><p>'+data+'</p></div></li>');
  $('#sendTextarea').val(' ');
 }
 
@@ -662,82 +648,5 @@ function removeCN(sdpLines, mLineIndex) {
   sdpLines[mLineIndex] = mLineElements.join(' ');
   return sdpLines;
 }
-
-
-
-
-
-/**
-
-
-var localStream, localPeerConnection, remotePeerConnection;
-      var localVideo = document.querySelector('#localVideo');
-      var remoteVideo = document.querySelector('#remoteVideo');
-      var startButton = document.getElementById("start");
-      //var focusButton = document.getElementById("focus");
-      startButton.disabled = false;
-      startButton.onclick = startq;
-      //focusButton.onclick = focus;
-
-      
-      
-
-     
-            
-
-      function handleUserMedia(stream) {
-        console.log('Adding local stream.');
-        localVideo.src = window.URL.createObjectURL(stream);
-        localStream = stream;      
-      }
-
-      function handleUserMediaError(error){
-        console.log('getUserMedia error: ', error);
-      }     
-
-      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-      var constraints = {video: true,audio:true};
-
-      
-
-      /**initialize = function() {
-          var link = ''+window.location.href;
-          $('.roomlink').html(link);
-          //openChannel();
-          //maybeRequestTurn();
-          startq();
-      };
-
-      */
-
-
-       
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
